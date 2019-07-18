@@ -12,15 +12,19 @@ module.exports = merge(commonConfig, {
     chunkFilename: '[id].[hash].chunk.js'
   },
 
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        warnings: false,
-        screw_ie8: true
-      },
-      output: {
-        comments: false
-      }
-    })
-  ]
+  optimization: {
+    minimize: false //Update this to true or false
+  }
+
+  // plugins: [
+  //   new webpack.optimize.UglifyJsPlugin({
+  //     compressor: {
+  //       warnings: false,
+  //       screw_ie8: true
+  //     },
+  //     output: {
+  //       comments: false
+  //     }
+  //   })
+  // ]
 });
