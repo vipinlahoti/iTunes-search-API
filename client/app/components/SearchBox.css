@@ -1,0 +1,90 @@
+.search__wrapper {
+
+}
+
+.search__wrapper_box {
+  border: 0;
+  padding: 0.45rem;
+  width: 95%;
+}
+
+.search__wrapper-box:active,
+.search__wrapper-box:focus {
+  outline: none;
+}
+
+.suggestions__wrapper {
+  background: #FFF;
+  border: 2px solid #c2c2c2;
+  border-radius: 0.25rem;
+  margin-top: -2px;
+  max-height: 65vh;
+  position: relative;
+  padding: 0.45rem;
+  position: absolute;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 34.2rem;
+}
+
+.search__wrapper_form {
+  border: 2px solid #c2c2c2;
+  border-radius: 0.25rem;
+  box-shadow: 3px 3px 3px -2px #d7d7d7;
+  position: relative;
+  width: 35rem; 
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.search__wrapper_clear {
+  background: none;
+  border: 0;
+  position: absolute;
+  right: 0.25rem;
+  top: 0.30rem;
+  cursor: pointer;
+}
+
+.suggestions__inner h3,
+.suggestions__inner h5 {
+  margin: 2px;
+}
+
+.suggestions__inner .unfavbutton,
+.suggestions__inner .favbutton {
+  border: 1px solid;
+  background: transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0.15rem 0.45rem;
+  color: #e30303;
+} 
+
+.suggestions__inner .favbutton {
+  background: #e30303;
+  color: #FFF;
+}
+
+.suggestions__inner img {
+  width: 3rem;
+}
+
+.suggestions__inner_tracks {
+  width: 27rem;
+}
+
+.suggestions__inner_kind {
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 0.20rem 0.45rem;
+  background: #c0c0c0;
+  width: 100%;
+}
+
+.genre-list {
+  border-bottom: 1px solid #c0c0c0;
+  padding: 0.35rem;
+}
