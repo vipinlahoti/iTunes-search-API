@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Favourates = ({favItems}) => {
+const Favorites = ({favItems}) => {
   return (
     <div className="favourates__wrapper">
       <div className="genre-list">
@@ -22,4 +22,4 @@ const Favourates = ({favItems}) => {
   );
 }
 
-export default Favourates;
+export default Favorites;

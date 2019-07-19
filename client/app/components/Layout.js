@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import Header from "./Header";
 import SearchBox from "./SearchBox";
-import Favourates from "./Favourates";
+import Favorites from "./Favorites";
 
 class Layout extends Component {
   state = {
@@ -43,14 +43,14 @@ class Layout extends Component {
             {favItem !== null ? (
               <div className="favourates__wrapper">
                 <div className="row between-xs middle-xs">
-                  <h2>My Favourates</h2>
-                  <button onClick={this.handleRemoveFav} className="remove-fav">Remove Favourates</button>
+                  <h2>My Favorites</h2>
+                  <button onClick={this.handleRemoveFav} className="remove-fav">Remove Favorites</button>
                 </div>
               </div>
               ) : null }
             {favItem !== null && favItem.map((item, index) => {
               return (
-                <Favourates
+                <Favorites
                   key={index}
                   favItems={item}
                 />

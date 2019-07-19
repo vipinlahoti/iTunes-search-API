@@ -5,7 +5,6 @@
   "private": true,
   "scripts": {
     "start": "webpack -p --progress --profile --colors && node server",
-    "start:dev": "node server",
     "heroku-postbuild": "webpack -p --progress --profile --colors && node server"
   },
   "engines": {
