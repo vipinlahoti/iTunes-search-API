@@ -12,7 +12,7 @@ const _ = require('lodash');
 const webpackConfig = require('../webpack.config');
 
 const isDev = process.env.NODE_ENV !== 'production';
-const port  = process.env.PORT || 8080;
+const port  = process.env.PORT || 5000;
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
