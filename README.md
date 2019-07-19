@@ -1,5 +1,7 @@
 # iTunes Search API
 
+![http://oi64.tinypic.com/2r44ku0.jpg](http://oi64.tinypic.com/2r44ku0.jpg)
+
 This project was a code challenge built on React Library, Express and Webpack
 
 ## Installing dependencies
