@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import SearchSuggestions from './SearchSuggestions';
-import './SearchBox.css';
 
 class SearchBox extends Component {
   state = {
     query: '',
-    results: [],
+    results: []
   }
 
   handleInputChange = () => {
@@ -24,14 +23,12 @@ class SearchBox extends Component {
     })
   }
 
-  // handleClearForm = () => {
-  //   this.setState({
-  //     query: '',
-  //     results: []
-  //   })
-
-  //   console.log('yes')
-  // }
+  handleClearForm = () => {
+    this.setState({
+      query: '',
+      results: []
+    })
+  }
 
   getInfo = () => {
     axios.get('/searchapi', {
@@ -40,11 +37,16 @@ class SearchBox extends Component {
       }
     })
     .then(({ data }) => {
-      console.log(data)
       this.setState({
-        results: [data] // iTunes API returns a data                             
+        results: [data]
       })
     })
+  }
+
+  favToggle = (item) => {
+    this.setState({
+      favItems: [...this.state.favItems, item]
+    });
   }
 
   render() {
@@ -59,18 +61,24 @@ class SearchBox extends Component {
             ref={input => this.search = input}
             onChange={this.handleInputChange}
           />
-         {/* 
-          Clear form button
-          <button
-            className="search__wrapper-clear"
-            onClick={this.handleClearForm}>X</button>
-        */}
+
+          {this.state.query ? (
+            <button
+              className="search__wrapper-clear"
+              onClick={this.handleClearForm}>X</button>
+            ) : null }
         </div>
 
         {results.length ? (
           <div className="suggestions__wrapper">
             {results.map((items, index) => {
-              return <SearchSuggestions key={index} items={items}/>
+              return (
+                <SearchSuggestions
+                  key={index}
+                  items={items}
+                  favToggle={this.props.favToggle}
+                />
+              )
             })}
           </div>
         ) : null }

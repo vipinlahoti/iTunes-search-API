@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import SearchSuggestionsTitle from './SearchSuggestionsTitle';
-import './SearchBox.css';
+import SearchSuggestionsList from './SearchSuggestionsList';
 
 class SearchSuggestions extends Component {
 
@@ -10,7 +9,12 @@ class SearchSuggestions extends Component {
     return (
       <div className="suggestions__inner">
         {Object.keys(genre).map((item, index) => (
-          <SearchSuggestionsTitle key={index} itemKey={item} itemValue={genre[item]} />
+          <SearchSuggestionsList
+            key={index}
+            itemKey={item}
+            itemValue={genre[item]}
+            favToggle={this.props.favToggle}
+          />
         ))}
       </div>
     );
