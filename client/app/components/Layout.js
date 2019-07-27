@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import Header from "./Header";
-import SearchBox from "./SearchBox";
-import Favorites from "./Favorites";
+import Header from './Header';
+import SearchBox from './SearchBox';
+import Favorites from './Favorites';
 
 class Layout extends Component {
   state = {

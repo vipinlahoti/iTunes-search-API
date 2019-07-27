@@ -1,5 +1,4 @@
 const express = require('express');
-const historyApiFallback = require('connect-history-api-fallback');
 const path = require('path');
 const webpack = require('webpack');
 const request = require('request');
@@ -20,10 +19,6 @@ app.use(express.json());
 
 if (isDev) {
   const compiler = webpack(webpackConfig);
-
-  app.use(historyApiFallback({
-    verbose: false
-  }));
 
   app.use(webpackDevMiddleware(compiler, {
     publicPath: webpackConfig.output.publicPath,
@@ -47,18 +42,6 @@ if (isDev) {
     res.end();
   });
 }
-
-// app.use('/searchapi', function(req, res, next) {
-//   request(`https://itunes.apple.com/search?term=${req.query.searchId}`, (erroe, response, body) => {
-//     if (res.statusCode === 200) {
-//       const responseData = body['results'];
-//       console.log(responseData);
-//       res.send(body)
-//     } else {
-//       res.send(error)
-//     }
-//   })
-// })
 
 // iTunes Search API
 app.use('/searchapi', function(req, res, next) {

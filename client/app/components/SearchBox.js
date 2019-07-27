@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
 import SearchSuggestions from './SearchSuggestions';
+import { fetchSearch } from '../actions/searchActions';
 
 class SearchBox extends Component {
   state = {
     query: '',
-    results: []
+    showSuggestions: true
   }
 
   handleInputChange = () => {
@@ -13,34 +14,22 @@ class SearchBox extends Component {
       query: this.search.value
     }, () => {
       if (this.state.query && this.state.query.length > 1) {
-        this.getInfo()
-      }
-      else {
+        this.getInfo();
         this.setState({
-          results: []
-        })
+          showSuggestions: true
+        });
       }
     })
   }
 
   handleClearForm = () => {
     this.setState({
-      query: '',
-      results: []
-    })
+      showSuggestions: false
+    });
   }
 
   getInfo = () => {
-    axios.get('/searchapi', {
-      params: {
-        searchId: this.state.query
-      }
-    })
-    .then(({ data }) => {
-      this.setState({
-        results: [data]
-      })
-    })
+    this.props.fetchSearch(this.state.query);
   }
 
   favToggle = (item) => {
@@ -50,28 +39,29 @@ class SearchBox extends Component {
   }
 
   render() {
-    const { results } = this.state;
+    const { searchList } = this.props;
+    const { showSuggestions, query } = this.state;
 
     return (
       <div className="search__wrapper">
-        <div className="search__wrapper_form">
+        <div className="search__wrapper-form">
           <input
             placeholder="Start searching.."
-            className="search__wrapper_box"
+            className="search__wrapper-box"
             ref={input => this.search = input}
             onChange={this.handleInputChange}
           />
 
-          {this.state.query ? (
+          {query && searchList.length && showSuggestions ? (
             <button
               className="search__wrapper-clear"
               onClick={this.handleClearForm}>X</button>
             ) : null }
         </div>
 
-        {results.length ? (
+        {query && searchList.length && showSuggestions ? (
           <div className="suggestions__wrapper">
-            {results.map((items, index) => {
+            {searchList.map((items, index) => {
               return (
                 <SearchSuggestions
                   key={index}
@@ -87,4 +77,12 @@ class SearchBox extends Component {
   }
 }
 
-export default SearchBox;
+const mapStateToProps = state => ({
+  searchList: state.searchList.items
+});
+
+const mapDispatchToProps = {
+  fetchSearch
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBox);
