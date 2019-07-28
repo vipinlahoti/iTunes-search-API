@@ -26,7 +26,7 @@ if (isDev) {
     stats: {
       colors: true,
       hash: false,
-      timings: true,
+      timings: false,
       chunks: false,
       chunkModules: false,
       modules: false

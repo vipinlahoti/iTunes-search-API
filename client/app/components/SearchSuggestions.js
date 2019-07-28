@@ -13,7 +13,6 @@ class SearchSuggestions extends Component {
             key={index}
             itemKey={item}
             itemValue={genre[item]}
-            favToggle={this.props.favToggle}
           />
         ))}
       </div>

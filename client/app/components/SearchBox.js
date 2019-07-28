@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SearchSuggestions from './SearchSuggestions';
-import { fetchSearch } from '../actions/searchActions';
+import { fetchSearch } from '../redux/actions';
 
 class SearchBox extends Component {
   state = {
@@ -32,12 +32,6 @@ class SearchBox extends Component {
     this.props.fetchSearch(this.state.query);
   }
 
-  favToggle = (item) => {
-    this.setState({
-      favItems: [...this.state.favItems, item]
-    });
-  }
-
   render() {
     const { searchList } = this.props;
     const { showSuggestions, query } = this.state;
@@ -66,7 +60,6 @@ class SearchBox extends Component {
                 <SearchSuggestions
                   key={index}
                   items={items}
-                  favToggle={this.props.favToggle}
                 />
               )
             })}

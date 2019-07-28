@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import { connect } from 'react-redux';
 import Header from './Header';
 import SearchBox from './SearchBox';
 import Favorites from './Favorites';
+import { setFavorites } from '../redux/actions';
 
 class Layout extends Component {
   state = {
-    favItems: []
-  }
-
-  favToggle = (item) => {
-    this.setState({
-      favItems: [...this.state.favItems, item]
-    });
+    favItems: this.props.favItems
   }
 
   handleRemoveFav = () => {
@@ -23,7 +19,7 @@ class Layout extends Component {
   }
 
   componentDidUpdate() {
-    const stateFavItems = this.state.favItems;
+    const stateFavItems = this.props.favItems;
     const storedFavItem = JSON.parse(localStorage.getItem('favItem'));
     const setFaItems = _.unionWith(stateFavItems, storedFavItem, _.isEqual);
 
@@ -31,6 +27,7 @@ class Layout extends Component {
   }
 
   render() {
+    const { favItems } = this.props;
     const favItem = JSON.parse(localStorage.getItem('favItem'));
 
     return (
@@ -38,7 +35,7 @@ class Layout extends Component {
         <div className="row">
           <div className="col-xs-12">
             <Header />
-            <SearchBox favToggle={this.favToggle} />
+            <SearchBox />
 
             {favItem !== null ? (
               <div className="favourates__wrapper">
@@ -63,4 +60,12 @@ class Layout extends Component {
   }
 }
 
-export default Layout;
+const mapStateToProps = state => ({
+  favItems: state.searchList.favItems
+});
+
+const mapDispatchToProps = {
+  setFavorites
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);

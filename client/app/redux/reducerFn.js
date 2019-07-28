@@ -1,7 +1,8 @@
-import { FETCH_SEARCH } from '../actions/constants';
+import { FETCH_SEARCH, ADD_FAV } from './constants';
 
 const initialState = {
   items: [],
+  favItems: {}
 }
 
 export default function (state = initialState, action) {
@@ -10,6 +11,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         items: [...action.payload]
+      }
+      break;
+    case ADD_FAV:
+      return {
+        ...state,
+        favItems: [...action.payload]
       }
       break;
     default:

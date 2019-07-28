@@ -1,4 +1,4 @@
-import { FETCH_SEARCH } from './constants';
+import { FETCH_SEARCH, ADD_FAV } from './constants';
 
 function fetchSearch(item) {
   return (dispatch) => {
@@ -11,4 +11,11 @@ function fetchSearch(item) {
   }
 }
 
-export { fetchSearch };
+function setFavorites(item) {
+  return {
+    type: ADD_FAV,
+    payload: [item]
+  }
+}
+
+export { fetchSearch, setFavorites };

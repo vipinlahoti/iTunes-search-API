@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { setFavorites } from '../redux/actions';
 
 class SearchSuggestionsItem extends Component {
   state = {
@@ -6,7 +8,7 @@ class SearchSuggestionsItem extends Component {
   }
 
   handleFav = () => {
-    this.props.favToggle(this.props.items);
+    this.props.setFavorites(this.props.items);
   }
   
   render() {
@@ -34,4 +36,12 @@ class SearchSuggestionsItem extends Component {
   }
 }
 
-export default SearchSuggestionsItem;
+const mapStateToProps = state => ({
+  searchList: state.searchList.favItems
+});
+
+const mapDispatchToProps = {
+  setFavorites
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchSuggestionsItem);

@@ -13,7 +13,6 @@ const SearchSuggestionsList = props => {
           <SearchSuggestionsItem
             key={index}
             items={item}
-            favToggle={props.favToggle}
           />
         )
       })}
